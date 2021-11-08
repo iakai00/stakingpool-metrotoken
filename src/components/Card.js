@@ -11,16 +11,17 @@ import baba from "../images/baba.png"
 import dhar from "../images/dhar.png"
 import nom from "../images/nom.png"
 
+// <Link to="/metroYak">Enter Pool</Link>
 
 const Card = () => {
     const history = useHistory();
     const goLogin = () => history.push('login');
     return (
         <div className="wrapper">
-          <CardStructure img={lakhe} title="Metro to Yak Pool" description="Stake metro token to earn yak token as incentives" />
-          <CardStructure img={baba} title="Metro to Yak Pool" description="Stake metro token to earn yak token as incentives" />
-          <CardStructure img={dhar} title="Metro to Yak Pool" description="Stake metro token to earn yak token as incentives" />
-          <CardStructure img={nom} title="Metro to Yak Pool" description="Stake metro token to earn yak token as incentives" />
+            <CardStructure img={lakhe} title="Metro to Yak Pool" description="Stake metro token to earn yak token as incentives" />
+            <CardStructure img={baba} title="Metro to Nom Pool" description="Stake metro token to earn nom token as incentives" />
+          <CardStructure img={dhar} title="Metro to DHAR Pool" description="Stake metro token to earn dhar token as incentives" />
+          <CardStructure img={nom} title="Metro to BABA Pool" description="Stake metro token to earn baba token as incentives" />
         </div>
        
     )
@@ -34,7 +35,7 @@ function CardStructure(props) {
             <h2 className="card__title">{ props.title }</h2>
             <p className="card_description">{props.description}</p>
         </div>
-        <button className="card__btn"><Link to ="/metroNom">Enter Pool </Link></button>
+            <button className="card__btn">{ props.click }<Link to="/metroNom">Enter Pool</Link></button>
 
     </div>
     )

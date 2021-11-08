@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes, Switch, Link } from "react-router-dom";
 const Header = () => {
   return (
     <div>
-          <h1> This is just the test</h1>
+          <h1> Metro Token Staking Pool</h1>
           <ul className="nav">
               <li>
                   <Link to ="/"> Home </Link>

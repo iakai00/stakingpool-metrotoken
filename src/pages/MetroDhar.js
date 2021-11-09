@@ -4,14 +4,14 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
 import MetroToken from '../artifacts_contracts/MetroToken.json'
-import YakToken from '../artifacts_contracts/YakToken.json'
-import YakTokenPool from '../artifacts_contracts/YakTokenPool.json'
+import DharToken from '../artifacts_contracts/DharToken.json'
+import DharTokenPool from '../artifacts_contracts/DharTokenPool.json'
 import Navbar from '../components/Navbar'
-import Main from './MetroYakMain'
+import Main from './MetroDharMain'
 import '../App.scss'
-import MetroYakMain from './MetroYakMain'
+import MetroDharMain from './MetroDharMain'
 
-class MetroYak extends Component {
+class MetroDhar extends Component {
 
   async componentWillMount() {
     await this.loadWeb3()
@@ -37,26 +37,26 @@ class MetroYak extends Component {
       window.alert('MetroToken contract not deployed to detected network.')
     }
 
-    // Load YakToken
-    const yakTokenData = YakToken.networks[networkId]
-    if(yakTokenData) {
-      const yakToken = new web3.eth.Contract(YakToken.abi, yakTokenData.address)
-      this.setState({ yakToken })
-      let yakTokenBalance = await yakToken.methods.balanceOf(this.state.account).call()
-      this.setState({ yakTokenBalance: yakTokenBalance.toString() })
+    // Load DharToken
+    const dharTokenData = DharToken.networks[networkId]
+    if(dharTokenData) {
+      const dharToken = new web3.eth.Contract(DharToken.abi, dharTokenData.address)
+      this.setState({ dharToken })
+      let dharTokenBalance = await dharToken.methods.balanceOf(this.state.account).call()
+      this.setState({ dharTokenBalance: dharTokenBalance.toString() })
     } else {
-      window.alert('YakToken contract not deployed to detected network.')
+      window.alert('DharToken contract not deployed to detected network.')
     }
 
-    // Load YakTokenPool
-    const yakTokenPoolData = YakTokenPool.networks[networkId]
-    if(yakTokenPoolData) {
-      const yakTokenPool = new web3.eth.Contract(YakTokenPool.abi, yakTokenPoolData.address)
-      this.setState({ yakTokenPool })
-      let stakingBalance = await yakTokenPool.methods.stakingBalance(this.state.account).call()
+    // Load DharTokenPool
+    const dharTokenPoolData = DharTokenPool.networks[networkId]
+    if(dharTokenPoolData) {
+      const dharTokenPool = new web3.eth.Contract(DharTokenPool.abi, dharTokenPoolData.address)
+      this.setState({ dharTokenPool })
+      let stakingBalance = await dharTokenPool.methods.stakingBalance(this.state.account).call()
       this.setState({ stakingBalance: stakingBalance.toString() })
     } else {
-      window.alert('YakTokenPool contract not deployed to detected network.')
+      window.alert('DharTokenPool contract not deployed to detected network.')
     }
 
     this.setState({ loading: false })
@@ -77,8 +77,8 @@ class MetroYak extends Component {
 
   stakeTokens = (amount) => {
     this.setState({ loading: true })
-    this.state.metroToken.methods.approve(this.state.yakTokenPool._address, amount).send({ from: this.state.account }).on('transactionHash', (hash) => {
-      this.state.yakTokenPool.methods.stakeTokens(amount).send({ from: this.state.account }).on('transactionHash', (hash) => {
+    this.state.metroToken.methods.approve(this.state.dharTokenPool._address, amount).send({ from: this.state.account }).on('transactionHash', (hash) => {
+      this.state.dharTokenPool.methods.stakeTokens(amount).send({ from: this.state.account }).on('transactionHash', (hash) => {
         this.setState({ loading: false })
       })
     })
@@ -86,7 +86,7 @@ class MetroYak extends Component {
 
   unstakeTokens = (amount) => {
     this.setState({ loading: true })
-    this.state.yakTokenPool.methods.unstakeTokens().send({ from: this.state.account }).on('transactionHash', (hash) => {
+    this.state.dharTokenPool.methods.unstakeTokens().send({ from: this.state.account }).on('transactionHash', (hash) => {
       this.setState({ loading: false })
     })
   }
@@ -96,10 +96,10 @@ class MetroYak extends Component {
     this.state = {
       account: '0x0',
       metroToken: {},
-      yakToken: {},
-      yakTokenPool: {},
+      dharToken: {},
+      dharTokenPool: {},
       metroTokenBalance: '0',
-      yakTokenBalance: '0',
+      dharTokenBalance: '0',
       stakingBalance: '0',
       loading: true
     }
@@ -112,7 +112,7 @@ class MetroYak extends Component {
     } else {
       content = <Main
         metroTokenBalance={this.state.metroTokenBalance}
-        yakTokenBalance={this.state.yakTokenBalance}
+        dharTokenBalance={this.state.dharTokenBalance}
         stakingBalance={this.state.stakingBalance}
         stakeTokens={this.stakeTokens}
         unstakeTokens={this.unstakeTokens}
@@ -137,5 +137,5 @@ class MetroYak extends Component {
   }
 }
 
-export default MetroYak;
+export default MetroDhar;
 

@@ -10,30 +10,26 @@ class MetroYakMain extends Component {
     return (
       <div id="content" className="mt-3 row-border grid-container">
         <div>
-          <h2 class="center">STAKE YAK TOKEN &nbsp;&nbsp;<img src={ lakhe } height="32" alt="" style={{width: 50, height: 50, borderRadius: 50/ 2}}/></h2>
+          <h2 className="center">STAKE  FOR YAK TOKEN &nbsp;&nbsp;<img src={ lakhe } height="32" alt="" style={{width: 50, height: 50, borderRadius: 50/ 2}}/></h2>
           <p className="row-border">Here you can stake metro tokens to gain yak tokens as rewards.</p>
           <table className="table table-borderless text-muted text-center row-border">
             <thead>
               <tr>
                 <th scope="col">APY</th>
                 <th scope="col">
-                  {window.web3.utils.fromWei(
-                    this.props.stakingBalance,
-                    "Ether"
-                  )}{" "}
+                  15
                   %
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-              <th scope="col">Daily return</th>
+              <th scope="col">Estimated Reward</th>
               <th scope="col">
                 {window.web3.utils.fromWei(
                   this.props.stakingBalance,
                   "Ether"
                 )}{" "}
-                %
               </th>
               </tr>
             </tbody>

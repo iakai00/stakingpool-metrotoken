@@ -1,23 +1,23 @@
 import React, { Component } from "react";
-import nom from "../images/baba.png";
+import baba from "../images/nom.png";
 import metro from "../images/MetroLogo.png";
 import "../App.scss";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-class MetroNomMain extends Component {
+class MetroBabaMain extends Component {
   render() {
     return (
       <div id="content" className="mt-3 row-border grid-container">
         <div>
-          <h2 class="center">STAKE FOR NOM TOKEN &nbsp;&nbsp;<img src={ nom } height="32" alt="" style={{width: 50, height: 50, borderRadius: 50/ 2}}/></h2>
-          <p className="row-border">Here you can stake metro tokens to gain nom tokens as rewards.</p>
+          <h2 className="center">STAKE  FOR BABA TOKEN &nbsp;&nbsp;<img src={ baba } height="32" alt="" style={{width: 50, height: 50, borderRadius: 50/ 2}}/></h2>
+          <p className="row-border">Here you can stake metro tokens to gain baba tokens as rewards.</p>
           <table className="table table-borderless text-muted text-center row-border">
             <thead>
               <tr>
                 <th scope="col">APY</th>
                 <th scope="col">
-                  20
+                  15
                   %
                 </th>
               </tr>
@@ -29,7 +29,7 @@ class MetroNomMain extends Component {
                 {window.web3.utils.fromWei(
                   this.props.stakingBalance,
                   "Ether"
-                )}{" "}                
+                )}{" "}
               </th>
               </tr>
             </tbody>
@@ -54,10 +54,10 @@ class MetroNomMain extends Component {
                 </td>
                 <td>
                   {window.web3.utils.fromWei(
-                    this.props.nomTokenBalance,
+                    this.props.babaTokenBalance,
                     "Ether"
                   )}{" "}
-                  NOM
+                  BABA
                 </td>
               </tr>
             </tbody>
@@ -129,4 +129,4 @@ class MetroNomMain extends Component {
   }
 }
 
-export default MetroNomMain;
+export default MetroBabaMain;

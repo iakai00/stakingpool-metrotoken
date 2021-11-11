@@ -16,6 +16,8 @@ You will also see any lint errors in the console.
 
 ### `App can be simply cloned`
 
+git clone https://github.com/iakai00/stakingpool-metrotoken.git
+
 ### `npm install`
 
 This will install all of the dependencies required for the applications.
